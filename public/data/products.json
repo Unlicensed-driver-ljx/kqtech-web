@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "industrial",
+      "name": "工业级方案",
+      "products": [
+        {
+          "id": "rk3588",
+          "name": "RK3588+FPGA融合方案",
+          "image": "images/products/A7-3588-800.webp",
+          "desc": "支持Cameralink接口，多路异构计算",
+          "manual": "manuals/A73588J-1.6GHz-board-intro.pdf",
+	  "wikiUrl": "https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T6/zh#.E8.AE.BE.E7.BD.AE.E4.B8.AD.E6.96.87.E8.AF.AD.E8.A8.80.E4.B8.8E.E8.BE.93.E5.85.A5.E6.B3.95"
+        },
+	{
+          "id": "k73588",
+          "name": "K73588 RK3588+FPGA融合方案",
+          "image": "images/products/K7-3588-800.webp",
+          "desc": "支持Cameralink接口，多路异构计算",
+          "manual": "manuals/K73588J-1.6GHz-board-intro.pdf",
+          "wikiUrl": "https://c83bhb3ege.feishu.cn/docx/RSJLdDpqOov7wJxAJ6xc3mrunbf?from=from_copylink"
+        },
+        {
+          "id": "KA200",
+          "name": "KA200开发套件",
+          "image": "images/products/KA200-800.webp",
+          "desc": "A200是一款针对边缘计算的SoC类脑芯片处理器，应用最新灵汐众核类脑计算架构，内置ARM Cortex-A53 MP核心（八核）CPU，为新一代的人工智能推理、类脑计算提供高性能、低能耗的处理器",
+          "manual": "manuals/KA200数据手册_V1.0.pdf",
+          "wikiUrl": "https://gitee.com/Lynxi"
+        }
+      ]
+    }
+  ]
+}

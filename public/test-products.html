@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品数据测试页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .product { border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 8px; }
+        .product img { max-width: 200px; height: auto; }
+        .loading { color: #666; font-style: italic; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>🧪 KA200产品测试页面</h1>
+    <div id="status" class="loading">正在加载产品数据...</div>
+    <div id="products"></div>
+
+    <script>
+        async function testProducts() {
+            const statusEl = document.getElementById('status');
+            const productsEl = document.getElementById('products');
+            
+            try {
+                // 添加时间戳防止缓存
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/data/products.json?t=${timestamp}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                const products = data.categories[0].products;
+                
+                statusEl.innerHTML = `<span class="success">✅ 成功加载 ${products.length} 个产品</span>`;
+                
+                productsEl.innerHTML = products.map(product => `
+                    <div class="product">
+                        <h3>${product.name} (ID: ${product.id})</h3>
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <p><strong>描述:</strong> ${product.desc}</p>
+                        <p><strong>手册:</strong> <a href="${product.manual}" download>下载</a></p>
+                        <p><strong>文档:</strong> <a href="${product.wikiUrl}" target="_blank">查看</a></p>
+                        ${product.id === 'KA200' ? '<div style="background: #e7f3ff; padding: 10px; border-radius: 4px; margin-top: 10px;"><strong>🎉 这是新添加的KA200产品！</strong></div>' : ''}
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                statusEl.innerHTML = `<span class="error">❌ 加载失败: ${error.message}</span>`;
+                console.error('加载产品数据失败:', error);
+            }
+        }
+        
+        // 页面加载时自动测试
+        testProducts();
+    </script>
+</body>
+</html> 
